@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>评论区示例</title>
+  <link rel="icon" href="/dragon.ico">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .container1 {
+      max-width: 1355px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f9f9f9;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1,
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    .comment-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .comment-form img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+
+    .comment-form input,
+    .comment-form select,
+    .comment-form textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .comment-form button {
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .comment-form button:hover {
+      background-color: #218838;
+    }
+
+    .comments-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .comments-section li {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: white;
+    }
+
+    .comments-section img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 20px;
+    }
+
+    .comments-section span {
+      font-weight: bold;
+    }
+
+    .comments-section p {
+      margin: 5px 0;
+    }
+
+    .comments-section span.meta {
+      color: #888;
+      font-size: 0.8em;
+    }
+  </style>
+</head>
+
+<body>
+  <footer style="margin-top: 30px;">
+    <div class="container1">
+      <h1>评论区</h1>
+      <div class="comment-form">
+        <!-- 选择头像区域 -->
+        <input type="file" id="avatarInput" accept="image/*">
+        <img id="avatarPreview" src="https://via.placeholder.com/70" alt="User Avatar" style="display: none;">
+        <input type="text" id="userName" placeholder="你的名字">
+        <select id="systemSelect">
+          <option value="Windows 10">Windows 10</option>
+          <option value="macOS">macOS</option>
+          <option value="Linux">Linux</option>
+        </select>
+        <select id="regionSelect">
+          <option value="China">中国</option>
+          <option value="United States">外国</option>
+          <option value="Europe">太空</option>
+        </select>
+        <textarea id="commentInput" placeholder="良言一句三冬暖,恶语伤人六月寒...~"></textarea>
+        <button id="submitButton">提交</button>
+      </div>
+      <div class="comments-section">
+        <h2>评论列表</h2>
+        <ul id="commentsList"></ul>
+      </div>
+    </div>
+  </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const userNameInput = document.getElementById('userName');
+      const commentInput = document.getElementById('commentInput');
+      const avatarInput = document.getElementById('avatarInput');
+      const avatarPreview = document.getElementById('avatarPreview');
+      const systemSelect = document.getElementById('systemSelect');
+      const regionSelect = document.getElementById('regionSelect');
+      const submitButton = document.getElementById('submitButton');
+      const commentsList = document.getElementById('commentsList');
+
+      // 从LocalStorage获取评论数据并显示
+      const comments = JSON.parse(localStorage.getItem('comments')) || [];
+      comments.forEach(comment => {
+        displayComment(comment);
+      });
+
+      avatarInput.addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            avatarPreview.src = e.target.result;
+            avatarPreview.style.display = 'block';
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+
+      submitButton.addEventListener('click', () => {
+        const userName = userNameInput.value.trim();
+        const commentText = commentInput.value.trim();
+        const avatar = avatarPreview.style.display === 'block' ? avatarPreview.src : 'https://via.placeholder.com/70';
+        const system = systemSelect.value;
+        const region = regionSelect.value;
+
+        if (userName && commentText) {
+          const newComment = {
+            name: userName,
+            avatar: avatar,
+            text: commentText,
+            time: new Date().toLocaleString(),
+            system: system,
+            region: region
+          };
+          comments.push(newComment);
+          localStorage.setItem('comments', JSON.stringify(comments));
+          displayComment(newComment);
+          userNameInput.value = '';
+          commentInput.value = '';
+          avatarPreview.src = 'https://via.placeholder.com/70';
+          avatarPreview.style.display = 'none';
+          systemSelect.selectedIndex = 0; // 重置为默认选项
+          regionSelect.selectedIndex = 0; // 重置为默认选项
+        }
+      });
+
+      function displayComment(comment) {
+        const li = document.createElement('li');
+        const avatarImg = document.createElement('img');
+        avatarImg.src = comment.avatar;
+        avatarImg.alt = 'User Avatar';
+
+        const contentDiv = document.createElement('div');
+        const nameSpan = document.createElement('span');
+        nameSpan.textContent = comment.name;
+        nameSpan.style.fontWeight = 'bold';
+        nameSpan.style.marginRight = '10px';
+
+        const textP = document.createElement('p');
+        textP.textContent = comment.text;
+
+        const metaSpan = document.createElement('span');
+        metaSpan.className = 'meta';
+        metaSpan.textContent = ` - ${comment.time} (System: ${comment.system}, Region: ${comment.region})`;
+
+        contentDiv.appendChild(nameSpan);
+        contentDiv.appendChild(textP);
+        li.appendChild(avatarImg);
+        li.appendChild(contentDiv);
+        li.appendChild(metaSpan); // 将metaSpan放在内容之后
+
+        commentsList.appendChild(li);
+      }
+    });
+  </script>
+</body>
+
+</html>
