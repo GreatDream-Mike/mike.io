@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="icon" href="/dragon.ico">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    @font-face {
+      font-family: 'icomoon';
+      src: url('fonts/icomoon.eot?exwp8l');
+      src: url('fonts/icomoon.eot?exwp8l#iefix') format('embedded-opentype'),
+        url('fonts/icomoon.ttf?exwp8l') format('truetype'),
+        url('fonts/icomoon.woff?exwp8l') format('woff'),
+        url('fonts/icomoon.svg?exwp8l#icomoon') format('svg');
+      font-weight: normal;
+      font-style: normal;
+      font-display: block;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    .box {
+      height: 800px;
+    }
+
+    .pic {
+      width: 65%;
+      height: 100%;
+      background: url(/img/background10.jpg) center center no-repeat;
+      background-size: cover;
+      float: left;
+    }
+
+    @keyframes move {
+      0% {
+        transform: translate(0);
+      }
+
+      50% {
+        transform: translate(50px);
+      }
+
+      100% {
+        transform: translate(152px);
+      }
+    }
+
+    .click {
+      position: absolute;
+      width: 50%;
+      height: 100%;
+      border-radius: 30px;
+      background-color: rgba(0, 0, 0, .7);
+      /* animation: move 7s linear 1 forwards; */
+      transition: all 0.5s;
+    }
+
+    /* 右侧注册栏 */
+    .login {
+      width: 35%;
+      height: 100%;
+      background-color: gray;
+      float: right;
+    }
+
+    .login .option {
+      position: relative;
+      width: 300px;
+      height: 60px;
+      margin: 100px auto;
+      border-radius: 30px;
+      border: 2px solid skyblue;
+    }
+
+    .login ul .reg {
+      float: left;
+      width: 50%;
+      height: 60px;
+      text-align: center;
+      color: wheat;
+      font-size: 20px;
+      cursor: pointer;
+      line-height: 60px;
+    }
+
+
+    .login ul .log {
+      float: right;
+      width: 50%;
+      height: 60px;
+      color: wheat;
+      font-size: 20px;
+      text-align: center;
+      line-height: 60px;
+      cursor: pointer;
+    }
+
+    .box1 {
+      position: relative;
+      width: 400px;
+      margin: 0 auto;
+    }
+
+
+    .login .content {
+      /* 显示和隐藏 */
+      display: block;
+      width: 400px;
+      margin: 0 auto;
+      /* 解决外边框塌陷 */
+      border-top: 2px solid skyblue;
+    }
+
+    .login .content1 {
+      display: none;
+      position: absolute;
+      width: 400px;
+      height: 200px;
+      border-top: 2px solid skyblue;
+    }
+
+    .login .list1,
+    .list2,
+    .list3 {
+      position: relative;
+      width: 100%;
+      height: 40px;
+      margin: 40px auto;
+    }
+
+    .login span {
+      float: left;
+      line-height: 40px;
+      text-align: center;
+      width: 15%;
+      height: 100%;
+      background-color: wheat;
+    }
+
+    .login input {
+      float: right;
+      text-align: center;
+      color: white;
+      /* 取消input框的轮廓 */
+      outline: none;
+      width: 100%;
+      border-radius: 30px;
+      border: 0;
+      height: 100%;
+      border: 1px solid skyblue;
+      background-color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* input框前的字体图标 */
+    .list1::after {
+      font-family: 'icomoon';
+      position: absolute;
+      content: '';
+      font-size: 20px;
+      top: 10px;
+      left: 20px;
+    }
+
+    .list2::after {
+      font-family: 'icomoon';
+      position: absolute;
+      content: '';
+      font-size: 20px;
+      top: 10px;
+      left: 20px;
+    }
+
+
+    .list3::after {
+      font-family: 'icomoon';
+      position: absolute;
+      content: '';
+      font-size: 20px;
+      top: 10px;
+      left: 20px;
+    }
+
+    .login .regBtn {
+      display: block;
+      font-weight: 700;
+      width: 100%;
+      height: 50px;
+      background-color: pink;
+    }
+
+    .login .logBtn {
+      display: block;
+      font-weight: 700;
+      width: 100%;
+      height: 50px;
+      background-color: pink;
+    }
+
+    .message {
+      font-size: 22px;
+      font-family: '楷体';
+      color: wheat;
+      text-align: center;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+
+    <div class="pic">
+    </div>
+
+    <div class="login">
+      <!-- 注册和删除 -->
+      <div class="option">
+        <ul>
+          <li class="click"></li>
+          <li class="reg">注册</li>
+          <li class="log">登入</li>
+        </ul>
+      </div>
+
+      <!--注册界面-->
+      <div class="box1">
+        <div class="message">欢迎注册</div>
+        <div class="content">
+          <div class="list1">
+            <input type="text" class="name" placeholder="用户名">
+          </div>
+
+          <div class="list2">
+            <input type="password" class="password" placeholder="密码">
+          </div>
+
+          <div class="list3">
+            <input type="password" class="password1" placeholder="确认密码">
+          </div>
+
+          <button class="regBtn">注册</button>
+        </div>
+
+        <!-- 登入界面 -->
+        <div class="message"></div>
+        <div class="content1">
+          <div class="list1">
+            <input type="text" placeholder="请输入用户名" class="uName">
+          </div>
+
+          <div class="list2">
+            <input type="password" placeholder="请输入密码" class="uPassword">
+          </div>
+
+          <button class="logBtn">登入</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  </div>
+
+  <script>
+    const regi = document.querySelector('.content');
+    const logi = document.querySelector('.content1');
+    const click = document.querySelector('.click');
+    const reg = document.querySelector('.option .reg');
+    const log = document.querySelector('.option .log');
+    const regBtn = document.querySelector('.regBtn');
+    const logBtn = document.querySelector('.logBtn');
+    const message = document.querySelector('.message')
+    const loginStyle = document.querySelector('.login')
+
+    reg.addEventListener('click', function () {
+      click.style.transform = 'translateX(0)';
+      regi.style.display = 'block';
+      logi.style.display = 'none';
+      message.innerHTML = '欢迎注册'
+      loginStyle.style.backgroundColor = 'gray'
+    });
+
+    log.addEventListener('click', function () {
+      click.style.transform = 'translateX(152px)';
+      logi.style.display = 'block';
+      regi.style.display = 'none';
+      message.innerHTML = '欢迎登录'
+      loginStyle.style.backgroundColor = 'rgba(0,0,0,0.7)'
+    });
+
+    // 注册界面
+    regBtn.addEventListener('click', function () {
+      const name = document.querySelector('.name').value.trim();
+      const password = document.querySelector('.password').value.trim();
+      const password1 = document.querySelector('.password1').value.trim();
+
+      if (name && password) {
+        if (password === password1) {
+          const obj = { name, password };
+          // JSON.stringify:对象类型转换为字符串类型存入
+          localStorage.setItem('userInfo', JSON.stringify(obj));
+          alert("注册成功");
+        } else {
+          alert("密码不一致,请检查");
+        }
+      } else {
+        alert("姓名或密码不能为空");
+      }
+    });
+
+    // 登录界面
+    logBtn.addEventListener('click', function () {
+      const user = document.querySelector('.uName').value.trim();
+      const uPassword = document.querySelector('.uPassword').value.trim();
+
+      // 字符串类型转回对象类型取出
+      const storedInfo = JSON.parse(localStorage.getItem('userInfo'));
+      if (storedInfo && user === storedInfo.name && uPassword == storedInfo.password) {
+        alert('登录成功');
+        // 跳转到主页
+        location.href = ""
+      } else {
+        alert('登录失败,请检查用户名或密码');
+      }
+    });
+  </script>
+</body>
+
+</html>
