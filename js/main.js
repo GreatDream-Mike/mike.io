@@ -38,10 +38,10 @@ const arr = [
     Text: '我们在前端开发中,会发现其他网站中,有很多小图标,第一反应是使用精灵图,但是精灵图有一个缺点,修改麻烦,所以我介绍一个新的方法-字体图标',
     link: "/文章/引入字体图标的方法.html"
   },
-  { url: '../../img/background7.jpg', title: 'CSS常见的动画效果', Text: '利用动画效果,可以完成很多好玩的事情', link: "/文章/动画效果.html" },
-  { url: '../../img/background10.jpg', title: '个人简历', Text: '这是我的个人简历', link: '/文章/个人简历.html' },
-  { url: '../../img/background5.jpg', title: 'JavaScript 常用方法介绍', Text: 'JavaScript 中的字符串是不可变的，但提供了许多方法来操作字符串', link: '/文章/js经验贴.html' },
-  { url: '../../img/background9.jpg', title: '正则表达式', Text: '正则表达式可以帮助我们筛选', link: '/文章/正则表达式.html' },
+  { url: './img/background7.jpg', title: 'CSS常见的动画效果', Text: '利用动画效果,可以完成很多好玩的事情', link: "./文章/动画效果.html" },
+  { url: './img/background10.jpg', title: '个人简历', Text: '这是我的个人简历', link: './文章/个人简历.html' },
+  { url: './img/background5.jpg', title: 'JavaScript 常用方法介绍', Text: 'JavaScript 中的字符串是不可变的，但提供了许多方法来操作字符串', link: './文章/js经验贴.html' },
+  { url: './img/background9.jpg', title: '正则表达式', Text: '正则表达式可以帮助我们筛选', link: './文章/正则表达式.html' },
 ];
 
 // 轮播图公用属性
