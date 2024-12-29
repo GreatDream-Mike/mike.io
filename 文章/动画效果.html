@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS 动画常用方法介绍</title>
+  <link rel="icon" href="/dragon.ico">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      width: 80%;
+      max-width: 1200px;
+      margin: 0 auto;
+      overflow: hidden;
+      padding: 70px;
+      background: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    header {
+      background: #333;
+      color: #fff;
+      padding-top: 30px;
+      min-height: 70px;
+      border-bottom: #77b12f 3px solid;
+    }
+
+    header h1 {
+      text-align: center;
+      text-transform: uppercase;
+      margin: 0;
+      font-size: 24px;
+    }
+
+    nav ul {
+      padding: 0;
+      list-style: none;
+      text-align: center;
+    }
+
+    nav ul li {
+      display: inline;
+      margin: 0 10px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    section {
+      margin-bottom: 20px;
+    }
+
+    .transition-box,
+    .keyframes-box,
+    .animation-box {
+      width: 100px;
+      height: 100px;
+      background-color: #77b12f;
+      margin: 60px auto;
+      text-align: center;
+      line-height: 100px;
+      color: #fff;
+      font-size: 18px;
+      border-radius: 5px;
+      transition: all 0.5s ease;
+      /* 应用于过渡动画的盒子 */
+    }
+
+    /* 过渡动画的悬停效果  */
+    .transition-box:hover {
+      background-color: #333;
+      transform: scale(1.2);
+    }
+
+    /* 关键帧动画 */
+    @keyframes bounce {
+      0% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-50px);
+      }
+
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    .keyframes-box {
+      animation: bounce 2s infinite;
+      /* 应用关键帧动画 */
+    }
+
+    /* 动画属性示例 */
+    @keyframes example {
+      0% {
+        background-color: red;
+        left: 0px;
+        top: 0px;
+      }
+
+      50% {
+        background-color: yellow;
+        left: 200px;
+        top: 0px;
+      }
+
+      100% {
+        background-color: blue;
+        left: 200px;
+        top: 200px;
+      }
+    }
+
+    .animation-box {
+      position: relative;
+      animation-name: example;
+      animation-duration: 4s;
+      animation-timing-function: ease-in-out;
+      animation-delay: 0s;
+      animation-iteration-count: 1;
+      animation-direction: normal;
+      animation-fill-mode: forwards;
+      animation-play-state: paused;
+      /* 初始状态为暂停 */
+    }
+
+    /* 控制动画播放的按钮样式 */
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background-color: #77b12f;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #558022;
+    }
+
+    footer {
+      background: #333;
+      color: #fff;
+      text-align: center;
+      padding: 10px 0;
+      margin-top: 20px;
+    }
+
+    #animations .content li {
+      font-family: '楷体';
+      font-size: 20px;
+      color: black;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>CSS 动画常用方法介绍</h1>
+      <nav>
+        <ul>
+          <li><a href="#transitions">过渡动画</a></li>
+          <li><a href="#keyframes">关键帧动画</a></li>
+          <li><a href="#animations">动画属性</a></li>
+          <li><a href="/html/main.html">返回首页</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="transitions">
+        <h2>过渡动画</h2>
+        <p>过渡动画允许你在CSS属性变化时应用平滑的动画效果。</p>
+        <div class="transition-box" id="transitionBox"></div>
+        <button id="transitionButton">点击我</button>
+      </section>
+
+      <section id="keyframes">
+        <h2>关键帧动画</h2>
+        <p>关键帧动画允许你定义复杂的动画，通过指定动画序列中的关键点和它们的状态。</p>
+        <div class="keyframes-box" id="keyframesBox"></div>
+      </section>
+
+      <section id="animations">
+        <h2>动画属性</h2>
+        <ul class="content">
+          <li> 指定要使用的关键帧动画的名称
+            animation-name: exampleAnimation; (exampleAnimation 是你定义的关键帧动画的名称)
+
+          <li> 动画完成一个周期所需的时间
+            animation-duration: 2s; (2秒，也可以是其他时间单位如ms毫秒) </li>
+
+          <li>动画的速度曲线
+            animation-timing-function: ease-in-out; (指定动画的速度如何随时间变化，如线性、缓入、缓出等) </li>
+
+          <li> 动画开始前等待的时间
+            animation-delay: 1s; (1秒，动画将在1秒后开始执行) </li>
+
+          <li> 动画应该播放的次数
+            animation-iteration-count: infinite; (可以是具体次数，如3，或infinite表示无限循环) </li>
+
+          <li> 动画的播放方向
+            animation-direction: normal; (normal、reverse、alternate、alternate-reverse) </li>
+
+          <li> 动画执行前和执行后的状态
+            animation-fill-mode: forwards; (none、forwards、backwards、both) </li>
+
+          <li> 动画的播放状态
+            animation-play-state: running; (running 或 paused) </li>
+        </ul>
+        <div class="animation-box" id="animationBox"></div>
+        <button id="animationButton">播放动画</button>
+      </section>
+    </main>
+
+  </div>
+
+
+  <script>
+    document.getElementById('transitionButton').addEventListener('click', function () {
+      var box = document.getElementById('transitionBox');
+      if (box.style.backgroundColor === 'rgb(51, 51, 51)') {
+        box.style.backgroundColor = '#77b12f';
+        box.style.transform = 'scale(1)';
+      } else {
+        box.style.backgroundColor = 'rgb(51, 51, 51)';
+        box.style.transform = 'scale(1.2)';
+      }
+    });
+
+    document.getElementById('animationButton').addEventListener('click', function () {
+      var box = document.getElementById('animationBox');
+      if (box.style.animationPlayState === 'paused' || box.style.animationPlayState === '') {
+        box.style.animationPlayState = 'running';
+      } else {
+        box.style.animationPlayState = 'paused';
+      }
+    });
+  </script>
+  <footer>
+    <p>&copy; 2023 CSS 动画示例</p>
+  </footer>
+  </div>

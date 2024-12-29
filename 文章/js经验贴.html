@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript 经验分享</title>
+  <link rel="icon" href="/dragon.ico">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    .container {
+      width: 80%;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    code {
+      font-size: 20px;
+      font-weight: 700;
+      color: black;
+    }
+
+    section[id$='methods'] li {
+      font-family: '楷体';
+      font-size: 18px;
+      color: black;
+    }
+
+    header {
+      color: #fff;
+      padding-top: 30px;
+      min-height: 70px;
+      border-bottom: #e8491d 3px solid;
+    }
+
+    header a {
+      color: #fff;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 16px;
+    }
+
+    header ul {
+      padding: 0;
+      list-style: none;
+    }
+
+    header li {
+      display: inline;
+      padding: 0 20px 0 20px;
+    }
+
+    header #branding {
+      float: left;
+    }
+
+    header #branding h1 {
+      margin: 0;
+    }
+
+    header nav {
+      float: right;
+      margin-top: 10px;
+    }
+
+
+    main {
+      padding: 20px;
+      background: #fff;
+      margin-bottom: 20px;
+    }
+
+    section {
+      margin-bottom: 20px;
+    }
+
+    h1,
+    h2 {
+      font-family: '楷体';
+      color: #35424a;
+    }
+
+    footer {
+      padding: 20px;
+      background: #35424a;
+      color: #fff;
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript 常用方法介绍</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>JavaScript 常用方法介绍</h1>
+      <nav>
+        <ul>
+          <li><a href="/html/main.html">返回首页</a></li>
+          <li><a href="#string-methods">字符串方法</a></li>
+          <li><a href="#array-methods">数组方法</a></li>
+          <li><a href="#object-methods">对象方法</a></li>
+          <li><a href="#functional-methods">函数式方法</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="string-methods">
+        <h2>字符串方法</h2>
+        <p>JavaScript 中的字符串是不可变的，但提供了许多方法来操作字符串。</p>
+        <ul>
+          <li><code>charAt(index)</code>：返回指定索引处的字符。</li>
+          <li><code>concat(string2, string3, ..., stringN)</code>：连接两个或多个字符串，并返回新的字符串。</li>
+          <li><code>includes(searchString, position)</code>：判断一个字符串是否包含在另一个字符串中，根据情况返回 true 或 false。</li>
+          <li><code>indexOf(searchValue, fromIndex)</code>：返回在字符串中首次找到的值的位置，如果未找到则返回 -1。</li>
+          <li><code>slice(beginIndex, endIndex)</code>：提取字符串的某个部分，并返回一个新的字符串（不包含结束索引处的字符）。</li>
+          <li><code>split(separator, limit)</code>：将一个字符串分割成字符串数组。</li>
+          <li><code>substring(start, end)</code>：提取字符串中两个指定的索引号之间的字符。</li>
+          <li><code>toLowerCase()</code>：将字符串转换为小写。</li>
+          <li><code>toUpperCase()</code>：将字符串转换为大写。</li>
+        </ul>
+      </section>
+
+      <section id="array-methods">
+        <h2>数组方法</h2>
+        <p>数组在 JavaScript 中是非常有用的数据结构，提供了许多内置方法来操作数组。</p>
+        <ul>
+          <li><code>push(element1, ..., elementN)</code>：向数组的末尾添加一个或多个元素，并返回新的长度。</li>
+          <li><code>pop()</code>：移除数组的最后一个元素，并返回该元素的值。</li>
+          <li><code>shift()</code>：移除数组的第一个元素，并返回该元素的值。</li>
+          <li><code>unshift(element1, ..., elementN)</code>：向数组的开头添加一个或多个元素，并返回新的长度。</li>
+          <li><code>concat(array2, array3, ..., arrayN)</code>：合并两个或多个数组。</li>
+          <li><code>slice(begin, end)</code>：返回一个从开始到结束（不包括结束）选择的数组的一部分。</li>
+          <li><code>splice(start, deleteCount, item1, item2, ...)</code>：通过删除或替换现有元素或者添加新元素来修改数组内容。</li>
+          <li><code>indexOf(searchElement, fromIndex)</code>：返回在数组中可以找到一个给定元素的第一个索引，如果不存在，则返回 -1。</li>
+          <li><code>forEach(function(currentValue, index, arr), thisArg)</code>：对数组的每个元素执行一次提供的函数。</li>
+        </ul>
+      </section>
+
+      <section id="object-methods">
+        <h2>对象方法</h2>
+        <p>JavaScript 中的对象是可变的键值对集合。</p>
+        <ul>
+          <li><code>hasOwnProperty(prop)</code>：判断对象自身是否有某个属性。</li>
+          <li><code>isPrototypeOf(object)</code>：判断该对象是否为另一个对象的原型。</li>
+          <li><code>propertyIsEnumerable(prop)</code>：判断对象自身的某个属性是否可枚举。</li>
+          <li><code>toLocaleString()</code>：返回对象的本地字符串表示。</li>
+          <li><code>toString()</code>：返回对象的字符串表示。</li>
+          <li><code>valueOf()</code>：返回指定对象的原始值。</li>
+        </ul>
+      </section>
+
+      <section id="functional-methods">
+        <h2>函数式方法</h2>
+        <p>JavaScript 支持函数式编程范式，提供了一些高阶函数。</p>
+        <ul>
+          <li><code>map(function(currentValue, index, arr), thisArg)</code>：创建一个新数组，其结果是该数组中的每个元素是调用一次提供的函数后的返回值。</li>
+          <li><code>filter(function(currentValue, index, arr), thisArg)</code>：创建一个新数组，其包含通过所提供函数实现的测试的所有元素。</li>
+          <li>
+            <code>reduce(function(accumulator, currentValue, currentIndex, array), initialValue)</code>：对数组中的每个元素执行一个由您提供的
+            reducer 函数（升序执行），将其结果汇总为单个返回值。
+          </li>
+          <li><code>forEach(function(currentValue, index, arr), thisArg)</code>：对数组的每个元素执行一次提供的函数。</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

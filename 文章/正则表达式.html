@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>正则表达式详解与实战 </title>
+  <link rel="icon" href="/dragon.ico">
+  <style>
+    .method-property {
+      margin-bottom: 1rem;
+    }
+
+    .method-property h3 {
+      margin-top: 0;
+    }
+
+    .method-property p {
+      margin-bottom: 0.5rem;
+    }
+
+    .example {
+      background-color: #f9f9f9;
+      padding: 1rem;
+      border-left: 5px solid #4CAF50;
+      margin-top: 0.5rem;
+    }
+
+    code {
+      font-family: '楷体';
+      font-size: 18px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a href="/html/main.html" style="font-family: '楷体';font-size: 20px;text-decoration: none;font-weight: 700;">返回首页</a>
+    <h1>正则表达式详解与实战</h1>
+  </header>
+  <div class="container">
+    <div class="section">
+      <h2>一、正则表达式基础</h2>
+      <p>正则表达式可以帮助我们进行快速筛选,节约时间和过滤敏感词</p>
+    </div>
+
+    <div class="section">
+      <h2>二、正则表达式常用方法与属性</h2>
+
+      <div class="method-property">
+        <h3>1. test() 方法</h3>
+        <p>用于检测一个字符串是否匹配某个模式，如果字符串中含有匹配的模式，则返回 true，否则返回 false。</p>
+        <div class="example">
+          <pre><code>let regex = /hello/;
+let str = "hello world";
+console.log(regex.test(str)); // 输出: true</code></pre>
+        </div>
+      </div>
+
+      <div class="method-property">
+        <h3>2. exec() 方法</h3>
+        <p>用于检索字符串中符合正则表达式的内容。返回一个数组（未匹配到则返回null），其中存放匹配的结果。如果正则表达式中包含了圆括号，则返回的数组还包含子匹配项。</p>
+        <div class="example">
+          <pre><code>let regex = /(\d{4})-(\d{2})-(\d{2})/;
+let str = "今天的日期是2023-10-05";
+let result = regex.exec(str);
+console.log(result); // 输出: ["2023-10-05", "2023", "10", "05"]</code></pre>
+        </div>
+      </div>
+
+      <div class="method-property">
+        <h3>3. match() 方法</h3>
+        <p>字符串对象的方法，用于检索字符串中与正则表达式相匹配的结果。返回一个数组，其中存放所有匹配的结果，如果没有找到匹配项，则返回 null。</p>
+        <div class="example">
+          <pre><code>let str = "apple, orange, banana, mango";
+let fruits = str.match(/(\w+)/g);
+console.log(fruits); // 输出: ["apple", "orange", "banana", "mango"]</code></pre>
+        </div>
+      </div>
+
+      <div class="method-property">
+        <h3>4. matchAll() 方法</h3>
+        <p>返回一个包含所有匹配正则表达式及分组捕获结果的迭代器（在全局搜索时非常有用）。</p>
+        <div class="example">
+          <pre><code>let str = "The quick brown fox jumps over the lazy dog. The dog.";
+let regex = /the\s+(\w+)/gi;
+let matches = str.matchAll(regex);
+for (let match of matches) {
+    console.log(match[0], match[1]);
+}
+// 输出:
+// The quick brown fox jumps over the lazy dog. dog
+// The Dog (注意第二个匹配是大小写不敏感的，因为使用了'i'标志)</code></pre>
+          <p><strong>注意：</strong>
+            上面的示例中，由于使用了全局(`g`)和大小写不敏感(`i`)标志，`matchAll`返回了两个匹配项，但第二个匹配项中的"The"被转换为小写是不正确的说明，实际上`matchAll`会保持原字符串的大小写不变。正确的理解应该是它匹配了字符串中的"the"及其后面的单词，不考虑大小写。
+          </p>
+        </div>
+      </div>
+
+      <div class="method-property">
+        <h3>5. replace() 方法</h3>
+        <p>用于在字符串中查找匹配正则表达式的子串，并替换与正则表达式匹配的子串。</p>
+        <div class="example">
+          <pre><code>let str = "Visit Microsoft!";
+let newStr = str.replace(/microsoft/i, "W3Schools");
+console.log(newStr); // 输出: Visit W3Schools!</code></pre>
+        </div>
+      </div>
+
+      <div class="method-property">
+        <h3>6. split() 方法</h3>
+        <p>用于把一个字符串分割成字符串数组，数组中的每一项都是原字符串中与正则表达式相匹配的部分被分割出来的子串。</p>
+        <div class="example">
+          <pre><code>let str = "apple,orange,banana,mango";
+let fruits = str.split(/[,]/);
+console.log(fruits); // 输出: ["apple", "orange", "banana", "mango"]</code></pre>
+        </div>
+      </div>
+
+    </div>
+</body>
+
+</html>
