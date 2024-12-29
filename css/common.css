@@ -31,7 +31,7 @@ body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
   /* fixed表示背景图片相对于视口固定 */
-  background: url(./img/background9.jpg)no-repeat center center fixed;
+  background: url(../img/background9.jpg)no-repeat center center fixed;
   background-size: cover;
   margin: 0;
   font-family: Arial, sans-serif;
