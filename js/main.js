@@ -34,9 +34,9 @@ const dotsArray = Array.from(dots);
 
 const arr = [
   {
-    url: '../../img/background3.jpg', title: 'html中引入字体图片的方法(全流程)',
+    url: './img/background3.jpg', title: 'html中引入字体图片的方法(全流程)',
     Text: '我们在前端开发中,会发现其他网站中,有很多小图标,第一反应是使用精灵图,但是精灵图有一个缺点,修改麻烦,所以我介绍一个新的方法-字体图标',
-    link: "/文章/引入字体图标的方法.html"
+    link: "./文章/引入字体图标的方法.html"
   },
   { url: './img/background7.jpg', title: 'CSS常见的动画效果', Text: '利用动画效果,可以完成很多好玩的事情', link: "./文章/动画效果.html" },
   { url: './img/background10.jpg', title: '个人简历', Text: '这是我的个人简历', link: './文章/个人简历.html' },
